@@ -12,8 +12,11 @@ router.get("/", async (req, res) => {
 
     console.log(req.query);
 
-    const currentPage = Math.max(1, +page);
-    const limitPerPage = Math.max(1, +limit);
+    const currentPage = Math.max(1, parseInt(String(page), 10) || 1);
+    const limitPerPage = Math.min(
+      Math.max(1, parseInt(String(limit), 10) || 10),
+      100,
+    ); // Max 100 records per page
 
     const offset = (currentPage - 1) * limitPerPage;
 
@@ -31,7 +34,10 @@ router.get("/", async (req, res) => {
 
     // If department filter exister, match department name
     if (department) {
-      filterConditions.push(ilike(departments.name, `%${department}%`));
+      //   filterConditions.push(ilike(departments.name, `%${department}%`));
+
+      const deptPattern = `%${String(department).replace(/[%_]/g, "\\$&")}%`; // for sql injection vulnerability
+      filterConditions.push(ilike(departments.name, deptPattern));
     }
 
     // Combine all filters if they exist using the hand operator

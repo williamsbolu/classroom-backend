@@ -1,6 +1,6 @@
 import express from "express";
 import { and, desc, eq, getTableColumns, ilike, or, sql } from "drizzle-orm";
-import { departments, subjects } from "../schema";
+import { departments, subjects } from "../db/schema";
 import { db } from "../db";
 
 const router = express.Router();
@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
   try {
     const { search, department, page = 1, limit = 10 } = req.query;
 
-    console.log(req.query);
+    console.log({ query: req.query });
 
     const currentPage = Math.max(1, parseInt(String(page), 10) || 1);
     const limitPerPage = Math.min(

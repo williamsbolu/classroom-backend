@@ -8,6 +8,20 @@
       "when": 1769905572632,
       "tag": "0000_unusual_mongoose",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1770299856367,
+      "tag": "0001_flippant_robbie_robertson",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1770301674838,
+      "tag": "0002_jazzy_barracuda",
+      "breakpoints": true
     }
   ]
 }

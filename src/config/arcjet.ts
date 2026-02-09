@@ -1,4 +1,4 @@
-import arcjet, { detectBot, shield, slidingWindow } from "@arcjet/node";
+import arcjet, { detectBot, shield } from "@arcjet/node";
 
 if (!process.env.ARCJET_KEY && process.env.NODE_ENV !== "test") {
   throw new Error("ARCJET_KEY is required");
@@ -13,11 +13,6 @@ const aj = arcjet({
       mode: "LIVE", // Blocks requests. Use "DRY_RUN" to log only
       // Block all bots except the following
       allow: ["CATEGORY:SEARCH_ENGINE", "CATEGORY:PREVIEW"],
-    }),
-    slidingWindow({
-      mode: "LIVE",
-      interval: "2s",
-      max: 5,
     }),
   ],
 });

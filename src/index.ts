@@ -5,9 +5,9 @@ import express from "express";
 import cors from "cors";
 import { toNodeHandler } from "better-auth/node";
 
-import subjectsRouter from "./routes/subjects";
-import securityMiddleware from "./middleware/security";
-import { auth } from "./lib/auth";
+import subjectsRouter from "./routes/subjects.js";
+import securityMiddleware from "./middleware/security.js";
+import { auth } from "./lib/auth.js";
 
 const app = express();
 const PORT = 8000;
@@ -34,3 +34,5 @@ app.use("/api/subjects", subjectsRouter);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+// Allthroughout the project, i used the complete file extensions ".js" whenever im importing components from other file locations all throughout the websites because ESM Modules requires them // 6:03:00
